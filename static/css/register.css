@@ -1,0 +1,122 @@
+/* just for testing */
+body {
+
+    background: #E2E8F0;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+h1 {
+    color: #3273bd;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+
+    padding: 10px;
+    width: 70%;
+ 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button {
+    border-width: 1px;
+    width: 70%;
+}
+
+
+.username,
+.password,
+.confirm_password,
+.email {
+
+    width: 100%;
+    padding: 12px;
+    margin: 0px 0 13px 0;
+    border: 1px solid #ccc;
+    /* border-radius: 10px; */
+    outline: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+.username:focus,
+.password:focus {
+    border-bottom: 1px solid #000000;
+}
+
+
+form {
+
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 350px;
+}
+
+form:hover {
+    transition: transform 0.5s, box-shadow 0.5s;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    transform: translateY(+6px);
+
+}
+
+input[type=radio] {
+    accent-color: #000000;
+}
+
+.submit,
+.create {
+    width: 100%;
+    background-color: #3586e2;
+    color: white;
+    padding: 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+label {
+    font-size: 14px;
+    color: #3586e2;
+    font-weight: bold;
+}
+
+
+
+.signup,
+.login {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.signup a,
+.login a {
+    text-decoration: none;
+    font-weight: bold;
+    color:#3586e2;
+}
+
+.signup a:hover,
+.login a:hover {
+    text-decoration: underline;
+}
+
+.submit:hover,
+.create:hover {
+    background-color: #2b71c2;
+}
+
+
+
+
+

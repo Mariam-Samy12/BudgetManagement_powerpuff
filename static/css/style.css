@@ -1,0 +1,86 @@
+/* Container لضبط المسافات في الصفحة */
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    min-height: 80vh;
+}
+
+/* الكارد الأساسي - واخد نفس ستايل الـ form بتاعك */
+.about-card {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 450px; /* أوسع شوية من الفورم عشان الكلام */
+    text-align: center;
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+
+/* نفس تأثير الـ hover اللي في الكود بتاعك */
+.about-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    transform: translateY(+6px);
+}
+
+.project-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* زرار جيت هب بنفس ستايل الـ submit عندك */
+.github-link {
+    display: inline-block;
+    background-color: #fe6d73;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 15px;
+    margin-bottom: 30px;
+    transition: 0.3s;
+}
+
+.github-link:hover {
+    background-color: #ec686c;
+}
+
+/* قسم الفريق */
+.team-section {
+    text-align: left;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+}
+
+.team-list {
+    margin-top: 15px;
+}
+
+.member {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.member span {
+    font-size: 15px;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+/* لينكات لينكد إن بنفس ستايل لينكات الـ login/signup */
+.member a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #3586e2;
+    font-size: 14px;
+}
+
+.member a:hover {
+    text-decoration: underline;
+}

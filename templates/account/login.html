@@ -1,0 +1,43 @@
+{%extends 'base.html'%}
+{%block content%}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogIn</title>
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'css/register.css' %}" >
+</head>
+
+<body >
+ 
+             
+        {% if message %}
+
+    <div>{{ message }}</div>
+
+{% endif %}
+    <form action="" id="login" method="post">
+        {% csrf_token %}
+        <h1>Login</h1>
+        <div>
+            <input type="email" name="email" placeholder="email" class="email" id="email" required>
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="password" class="password" id="password" required>
+        </div>      
+        <input type="submit" class="submit">
+      <div class="signup"><span>Don't have an account?</span>  <a href="{%url 'signup'%}">sign up</a></div>
+
+
+    </form>
+
+
+</body>
+
+</html>
+{%endblock content%}

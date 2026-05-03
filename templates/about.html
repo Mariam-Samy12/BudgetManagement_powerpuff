@@ -1,0 +1,47 @@
+{%extends 'base.html'%}
+{%block content%}
+{%load static%}
+<link rel="stylesheet" href="{%static 'css/style.css'%}">
+<section class="about-container">
+    <div class="about-card">
+        <h1>About Our Project</h1>
+        
+        <p class="project-desc">
+            We are students at the <strong>Faculty of Computers and Artificial Intelligence, Cairo University (FCAI-CU)</strong>. 
+            This project was developed for the <strong>Software Engineering</strong> course under the supervision of <strong>Dr. Mohamed El-Ramly</strong>.
+        </p>
+
+        <div class="repo-section">
+            <a href="GITHUB_REPO_URL" target="_blank" class="github-link">
+                View Project Repository
+            </a>
+        </div>
+
+        <div class="team-section">
+            <label>Our Team</label>
+            <div class="team-list">
+                <!-- Member 1 -->
+                <div class="member">
+                    <span>Alaa Mamdouh</span>
+                    <a href="LINKEDIN_URL">LinkedIn</a>
+                </div>
+                <!-- Member 2 -->
+                <div class="member">
+                    <span>Alaa Ahmed</span>
+                    <a href="LINKEDIN_URL">LinkedIn</a>
+                </div>
+                <!-- Member 3 -->
+                <div class="member">
+                    <span>Mariam Samy</span>
+                    <a href="LINKEDIN_URL">LinkedIn</a>
+                </div>
+                <!-- Member 4 -->
+                <div class="member">
+                    <span>Yara Ayman</span>
+                    <a href="LINKEDIN_URL">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{%endblock content%}

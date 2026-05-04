@@ -1,0 +1,146 @@
+/* Container الأساسي - إضافة انيميشن عند الدخول */
+.trans-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    min-height: 80vh;
+    background-color: #f0f2f5; /* لون خلفية أحدث وأروق */
+    
+    /* انيميشن لدخول الصفحة كلها (تظهر وتترفع) */
+    animation: fadeInPage 0.8s ease-out;
+}
+
+/* الكارد - تحسين التنسيق والحركة */
+.trans-card {
+    background: white;
+    padding: 45px; /* وسعنا الـ padding شوية للشياكة */
+    border-radius: 20px; /* حواف أنعم */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); /* ضل أنعم وأحدث */
+    width: 100%;
+    max-width: 480px; /* زودنا العرض سيكة عشان الخانات الجديدة */
+    text-align: center;
+    
+    /* تأثير الترانزشن (الحركة الناعمة) */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* حركة أنعم للمحترفين */
+    
+    /* عشان نضمن إن الخانات متخرجش بره */
+    box-sizing: border-box;
+}
+
+/* تأثير الـ Hover لما الماوس ييجي على الكارد */
+.trans-card:hover {
+    transform: translateY(-12px); /* ترفع أكتر شوية */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15); /* الضل يتقل بلمسة جمالية */
+}
+
+/* تنسيق العنوان */
+.trans-card h1 {
+    margin-bottom: 35px;
+    color: #1a1a1a; /* أسود أهدى سيكة */
+    font-size: 28px;
+    font-weight: 800; /* خط أتقل */
+    letter-spacing: -0.5px; /* تقريب الحروف للشياكة */
+}
+
+/* تنسيق الليبل */
+.trans-card label {
+    display: block;
+    text-align: left;
+    font-weight: 600;
+    color: #4a4a4a;
+    margin-bottom: 8px;
+    margin-top: 15px;
+    font-size: 14px;
+    text-transform: uppercase; /* حروف كابيتال لليبل */
+    letter-spacing: 0.5px;
+}
+
+/* تنسيق الخانات الشامل (Inputs, Select, Textarea) - الدلع هنا */
+.trans-card input, 
+.trans-card select,
+.trans-card textarea {
+    width: 100%;
+    padding: 15px; /* مساحة أكبر جوه الخانة */
+    margin-bottom: 5px; /* قللنا المارجن سيكة */
+    border: 2px solid #e1e5eb; /* خط حدود أحدث وأوضح */
+    border-radius: 10px; /* حواف أنعم */
+    font-size: 16px;
+    color: #333;
+    display: block;
+    box-sizing: border-box;
+    font-family: inherit; /* عشان الـ textarea تاخد نفس الخط */
+    background-color: #fbfbfb; /* لون خلفية خفيف جوه الخانة */
+    
+    /* انيميشن ناعم للحدود والخلفية */
+    transition: all 0.3s ease;
+}
+
+/* تنسيق خاص للـ Textarea */
+.trans-card textarea {
+    resize: vertical; /* تمنع التوسع الأفقي اللي بيبوظ الشكل */
+    min-height: 100px;
+    line-height: 1.5;
+}
+
+/* حركة الـ Focus لما تدوسي جوه الخانة عشان تكتبي */
+.trans-card input:focus,
+.trans-card select:focus,
+.trans-card textarea:focus {
+    border-color: #3586e2; /* لون جانجو الأزرق */
+    background-color: white; /* الخلفية تبيض */
+    box-shadow: 0 0 0 4px rgba(53, 134, 226, 0.15); /* هالَة زرقاء خفيفة وناعمة (Glow) */
+    outline: none;
+}
+
+/* تنسيق الخانات عند عمل الـ Hover بالماوس (قبل الدوس) */
+.trans-card input:hover,
+.trans-card select:hover,
+.trans-card textarea:hover {
+    border-color: #b4c7e0;
+}
+
+/* زرار الحفظ - تصميم أحدث وحركة أقوى */
+.btn-submit {
+    background: linear-gradient(135deg, #3586e2 0%, #2b71c2 100%); /* تدرج لوني شيك */
+    color: white;
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    /* ترانزشن لكل حاجة بما فيها الضل */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(53, 134, 226, 0.3);
+}
+
+/* حركة الزرار لما تقفي عليه */
+.btn-submit:hover {
+    background: linear-gradient(135deg, #2b71c2 0%, #1e5ba3 100%);
+    transform: translateY(-2px); /* يترفع سيكة */
+    box-shadow: 0 6px 20px rgba(53, 134, 226, 0.5); /* الضل يزيد */
+}
+
+/* حركة الزرار لما تدوسي عليه (Click) */
+.btn-submit:active {
+    transform: translateY(1px); /* ينزل سيكة كأنه زرار حقيقي */
+    box-shadow: 0 2px 10px rgba(53, 134, 226, 0.3);
+}
+
+/* تعريف انيميشن دخول الصفحة */
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

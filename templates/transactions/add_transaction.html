@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/transaction.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="trans-container">
+    <form method="POST" class="trans-card">
+        {% csrf_token %}
+        <h1>Add Transaction</h1>
+
+        <label>Amount</label>
+        <input type="number" name="amount" step="0.01" placeholder="0.00" required>
+        
+        <label>Category</label>
+        <input type="text" name="category" placeholder="e.g. Food, Salary" required>
+
+        <label>Type</label>
+        <select name="type">
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+        </select>
+
+        <label>Payment Method</label>
+        <select name="payment_method">
+            <option value="cash">Cash</option>
+            <option value="credit_card">Credit Card</option>
+            <option value="bank_transfer">Bank Transfer</option>
+        </select>
+
+        <label>Date & Time</label>
+        <input type="datetime-local" name="date" required>
+
+        <label>Description (Optional)</label>
+        <textarea name="description" rows="3" placeholder="Add details..."></textarea>
+
+        <button type="submit" class="btn-submit">Save Transaction</button>
+    </form>
+</section>
+
+{% endblock %}

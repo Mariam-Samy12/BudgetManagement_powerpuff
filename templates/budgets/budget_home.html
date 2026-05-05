@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/budget.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="budget-body">
+    <div class="budget-card" style="max-width: 700px;">
+        <h1>My Budgets</h1>
+        <p>Overview of your monthly spending limits</p>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div style="padding: 10px; margin-bottom: 20px; border-radius: 10px; background-color: #d4edda; color: #155724; text-align: center;">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <div style="margin-top: 20px;">
+            {% for b in budgets %}
+                <div style="border: 1px solid #edf2f4; padding: 20px; border-radius: 15px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
+                    <div>
+                        <strong style="color: #2b2d42; font-size: 18px; display: block;">{{ b.category }}</strong>
+                        <span style="color: #8d99ae; font-size: 13px;">
+                            {{ b.start_date|date:"d M" }} - {{ b.end_date|date:"d M Y" }}
+                        </span>
+                    </div>
+                    
+                    <div style="text-align: right;">
+                        <div style="font-weight: 700; color: #4361ee; font-size: 20px; margin-bottom: 5px;">${{ b.amount }}</div>
+                        <a href="{% url 'edit_budget' b.id %}" style="background: #f0f3ff; color: #4361ee; padding: 5px 12px; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 600;">
+                            Edit Budget ✎
+                        </a>
+                    </div>
+                </div>
+            {% empty %}
+                <div style="text-align: center; padding: 40px; color: #8d99ae;">
+                    <p>You haven't set any budgets yet.</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <a href="{% url 'create_budget' %}" class="btn-save" style="display: block; text-align: center; text-decoration: none; margin-top: 20px;">
+            + Add New Budget
+        </a>
+    </div>
+</div>
+{% endblock %}

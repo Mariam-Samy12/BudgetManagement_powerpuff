@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+<div class="dashboard-wrapper">
+    <header class="dashboard-header">
+        <h1>Dashboard</h1>
+    </header>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <span>Total Balance</span>
+            <h2>${{ total_balance }}</h2>
+        </div>
+        <div class="stat-card" style="color: green;">
+            <span>Income</span>
+            <h2>+${{ income_summary }}</h2>
+        </div>
+        <div class="stat-card" style="color: red;">
+            <span>Expenses</span>
+            <h2>-${{ expense_summary }}</h2>
+        </div>
+    </div>
+
+    <div class="main-content-grid" style="display: flex; gap: 20px; margin-top: 20px;">
+        <section style="flex: 2; background: white; padding: 15px; border-radius: 10px;">
+            <h3>Recent Activity</h3>
+            {% for tx in recent_transactions %}
+            <p>{{ tx.category }} - ${{ tx.amount }} ({{ tx.type }})</p>
+            {% empty %}
+            <p>No transactions yet.</p>
+            {% endfor %}
+        </section>
+
+        <section style="flex: 1; background: white; padding: 15px; border-radius: 10px;">
+            <h3>Goals Progress</h3>
+            {% for goal in goals_preview %}
+            <div style="margin-bottom: 15px;">
+                <span>{{ goal.name }} ({{ goal.progress_bar }}%)</span>
+                <div style="background: #eee; height: 10px; border-radius: 5px; overflow: hidden;">
+                    <div class="progress-bar-fill" style="--progress: {{ goal.progress_bar|default:0 }}%;"></div>
+            </div>
+            {% empty %}
+            <p>No goals set.</p>
+            {% endfor %}
+        </section>
+    </div>
+</div>
+{% endblock %}

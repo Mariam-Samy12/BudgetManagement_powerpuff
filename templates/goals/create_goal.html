@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/goals.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="goals-form-container">
+    <h1>Set New Goal</h1>
+
+    
+    <form method="post">
+
+        {# csrf_token #}
+        {% csrf_token %}
+
+        
+        <div class="form-group">
+            <label>Goal Name</label>
+            <input type="text" name="name" placeholder="e.g. Save for Laptop" required>
+        </div>
+
+       
+        <div class="form-group">
+            <label>Target Amount ($)</label>
+            <input type="number" name="target_amount" step="0.01" min="0" placeholder="e.g. 1500" required>
+        </div>
+
+       
+        <div class="form-group">
+            <label>Deadline</label>
+            <input type="date" name="deadline" required>
+        </div>
+
+        
+        <input type="submit" value="Create Goal" class="btn-create">
+
+    </form>
+</div>
+
+{% endblock content %}

@@ -3,8 +3,10 @@
 <nav class="navbar">
     {% if user.is_authenticated %}
     <div class="logo"><a href="{% url 'dashboard' %}">📈</a></div>
+    <div style="color: yellow; font-size: 20px;">Hi, {{ user.username }}</div>
      {% else %}
       <div class="logo"><a href="{% url 'signup' %}">📈</a></div>
+      
      {% endif  %}
     
     <ul class="nav-links">
@@ -16,7 +18,7 @@
             <li><a href="{% url 'goals_list' %}" >Financial Goals</a></li>
             <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
             
-            <li style="color: yellow;">Hi, {{ user.username }}</li>
+         
             <li><a href="{% url 'logoutv' %}">Logout</a></li>
 
         {% else %}

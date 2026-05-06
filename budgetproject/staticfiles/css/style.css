@@ -34,7 +34,7 @@
 /* زرار جيت هب بنفس ستايل الـ submit عندك */
 .github-link {
     display: inline-block;
-    background-color: #fe6d73;
+    background-color: #bd161c;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -45,7 +45,7 @@
 }
 
 .github-link:hover {
-    background-color: #ec686c;
+    background-color: #740b0e;
 }
 
 /* قسم الفريق */

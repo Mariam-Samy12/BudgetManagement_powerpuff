@@ -1,0 +1,145 @@
+/* الألوان الأساسية للمشروع */
+:root {
+    --navy-blue: #1a2238;
+    --primary-blue: #4f46e5;
+    --danger-red: #ef4444;
+    --warning-orange: #f59e0b;
+    --success-green: #10b981;
+    --body-bg: #f4f7fa;
+    --card-bg: #ffffff;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--body-bg);
+    margin: 0;
+    color: var(--navy-blue);
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 { font-size: 2.2rem; margin-bottom: 5px; }
+.header p { color: #718096; }
+
+/* قسم التنبيهات (Alerts) */
+.alert {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    position: relative;
+}
+
+.alert-danger { background: #fff5f5; border-color: #feb2b2; color: #c53030; }
+.alert-warning { background: #fffaf0; border-color: #fbd38d; color: #975a16; }
+
+.alert-icon { margin-right: 15px; font-size: 1.2rem; }
+.alert-content p { margin: 0; font-size: 0.9rem; }
+
+.close-alert {
+    position: absolute;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: inherit;
+}
+
+/* بطاقات الميزانية (Budget Cards) */
+.budget-card {
+    border: 1px solid #edf2f7;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease;
+}
+
+.budget-card:hover { transform: translateY(-3px); }
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.category-info { display: flex; align-items: center; gap: 15px; }
+
+.icon-wrapper {
+    width: 45px;
+    height: 45px;
+    background: #f7fafc;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.category-details h3 { margin: 0; font-size: 1.1rem; }
+.category-details span { font-size: 0.85rem; color: #718096; }
+
+.amount { font-weight: bold; font-size: 1.1rem; }
+.amount span { color: #718096; font-weight: normal; }
+
+/* البادج (Status Badges) */
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.badge-warning { background: #fef3c7; color: #92400e; }
+.badge-danger { background: #fee2e2; color: #991b1b; }
+.badge-success { background: #dcfce7; color: #166534; }
+
+/* شريط التقدم (Progress Bar) */
+.progress-bar {
+    height: 10px;
+    background: #edf2f7;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.fill { height: 100%; border-radius: 10px; background-color: var(--primary-blue); }
+.fill.warning { background-color: var(--warning-orange); }
+.fill.danger { background-color: var(--danger-red); }
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #718096;
+}
+
+.add-btn {
+    width: 100%;
+    background: var(--primary-blue);
+    color: white;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}

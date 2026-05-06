@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+
+
+.report-container{
+    padding:20px;
+    background:#f5f6fa;
+    min-height:100vh;
+}
+
+
+.report-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.report-header h1{
+    margin:0;
+    color:#1e293b;
+    font-size:28px;
+}
+
+.report-header p{
+    color:gray;
+    margin-top:5px;
+    font-size:14px;
+}
+
+
+.filter-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.filter-buttons button{
+    border:none;
+    padding:8px 16px;
+    border-radius:10px;
+    background:#e5e7eb;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:13px;
+}
+
+.filter-buttons .active{
+    background:#4f6df5;
+    color:white;
+}
+
+
+.cards{
+    display:flex;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.card{
+    flex:1;
+    background:white;
+    border-radius:15px;
+    padding:15px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.card h4{
+    color:gray;
+    margin-bottom:8px;
+    font-size:14px;
+}
+
+.card h2{
+    margin:0;
+    font-size:28px;
+}
+
+.income h2{ color:#22c55e; }
+.expense h2{ color:#ef4444; }
+.balance h2{ color:#4f6df5; }
+
+
+.chart-box{
+    background:white;
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:25px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    height:350px;
+}
+
+.chart-box h3{
+    margin-bottom:15px;
+}
+
+
+.bottom-section{
+    display:flex;
+    gap:15px;
+}
+
+
+.pie-chart-box{
+    flex:1;
+    background:white;
+    padding:18px;
+    border-radius:15px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    height:350px;
+}
+
+.pie-chart-box h3{
+    margin-bottom:15px;
+}
+
+
+canvas{
+    max-height:250px !important;
+}
+
+
+@media (max-width: 900px){
+
+    .cards{
+        flex-direction:column;
+    }
+
+    .bottom-section{
+        flex-direction:column;
+    }
+
+    .report-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+}
+
+</style>
+
+<div class="report-container">
+
+   
+    <div class="report-header">
+
+        <div>
+            <h1>Reports & Analytics</h1>
+            <p>Overview of your income, expenses and spending patterns</p>
+        </div>
+
+        <div class="filter-buttons">
+            <button class="active">This Month</button>
+        </div>
+
+    </div>
+
+    
+    <div class="cards">
+
+        <div class="card income">
+            <h4>Total Income</h4>
+            <h2>${{ total_income }}</h2>
+        </div>
+
+        <div class="card expense">
+            <h4>Total Expenses</h4>
+            <h2>${{ total_expense }}</h2>
+        </div>
+
+        <div class="card balance">
+            <h4>Net Balance</h4>
+            <h2>${{ net_balance }}</h2>
+        </div>
+
+    </div>
+
+   
+    <div class="chart-box">
+
+        <h3>Income vs Expenses</h3>
+
+        <canvas id="barChart"></canvas>
+
+    </div>
+
+    
+    <div class="bottom-section">
+
+        <div class="pie-chart-box">
+
+            <h3>Spending by Category</h3>
+
+            <canvas id="pieChart"></canvas>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+/* ===== Bar Chart ===== */
+new Chart(document.getElementById('barChart'), {
+
+    type: 'bar',
+
+    data: {
+
+        labels: ['Income', 'Expenses'],
+
+        datasets: [{
+
+            label: 'Amount',
+
+            data: [{{ total_income }}, {{ total_expense }}],
+
+            borderWidth: 1
+
+        }]
+    },
+
+    options: {
+
+        responsive: true
+
+    }
+
+});
+
+
+/* ===== Pie Chart ===== */
+new Chart(document.getElementById('pieChart'), {
+
+    type: 'doughnut',
+
+    data: {
+
+        labels: [
+            {% for c in category_data %}
+                '{{ c.category }}',
+            {% endfor %}
+        ],
+
+        datasets: [{
+
+            data: [
+                {% for c in category_data %}
+                    {{ c.total }},
+                {% endfor %}
+            ],
+
+            borderWidth: 1
+
+        }]
+    },
+
+    options: {
+
+        responsive: true
+
+    }
+
+});
+
+</script>
+
+{% endblock %}

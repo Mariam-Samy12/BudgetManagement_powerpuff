@@ -1,0 +1,89 @@
+:root {
+    --navy-blue: #1a2238;
+    --primary-blue: #4f46e5;
+    --success-green: #10b981;
+    --danger-red: #ef4444;
+    --body-bg: #f4f7fa;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--body-bg);
+    margin: 0;
+    padding: 20px;
+}
+
+.report-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.title-section h1 { font-size: 2rem; color: var(--navy-blue); margin-bottom: 5px; }
+.title-section p { color: #718096; margin-bottom: 30px; }
+
+/* التبويبات (Tabs) */
+.tabs { display: flex; gap: 10px; margin-bottom: 25px; }
+
+.tab-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.tab-btn.active {
+    background: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+
+/* شبكة الإحصائيات (Stats Grid) */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    border: 1px solid #edf2f7;
+}
+
+.stat-card label { font-size: 0.9rem; color: #718096; }
+.stat-card .val { font-size: 1.8rem; font-weight: bold; margin: 10px 0; display: block; }
+.stat-card .trend { font-size: 0.85rem; }
+
+.income-text { color: var(--success-green); }
+.expense-text { color: var(--danger-red); }
+
+/* قسم التحليلات (Insights Section) */
+.insights-section {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #edf2f7;
+}
+
+.insight-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border-left: 5px solid transparent;
+}
+
+/* ألوان أنواع التحليلات */
+.border-danger { background: #fff5f5; border-left-color: var(--danger-red); }
+.border-warning { background: #fffaf0; border-left-color: var(--warning-orange); }
+.border-success { background: #f0fdf4; border-left-color: var(--success-green); }
+.border-blue { background: #f0f7ff; border-left-color: var(--primary-blue); }
+
+.insight-icon { font-size: 1.2rem; margin-right: 15px; }
+.insight-item p { margin: 0; font-size: 0.95rem; color: var(--navy-blue); }

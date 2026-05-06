@@ -3,9 +3,10 @@ from django.contrib import messages
 from .models import Budget
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from django.db.models import Sum
+from transactions.models import Transaction
 
-
-@login_required(login_url='login')
+@login_required
 def manage_budget(request, pk=None):
    
     budget_instance = get_object_or_404(Budget, pk=pk, user=request.user) if pk else None
@@ -15,7 +16,7 @@ def manage_budget(request, pk=None):
         amount = request.POST.get('amount')
         start_date = request.POST.get('start_date')
         end_date = request.POST.get('end_date')
-        alert = request.POST.get('alert_threshold')
+        alert = request.POST.get('alert_threshold') 
         
        
         if start_date >= end_date:
@@ -59,7 +60,27 @@ def manage_budget(request, pk=None):
     return render(request, 'budgets/create_budget.html', {'budget': budget_instance})
 
 
-@login_required(login_url='login')
+@login_required
 def budget_home(request):
     user_budgets = Budget.objects.filter(user=request.user).order_by('-start_date')
+    for budget in user_budgets:
+        transactions = Transaction.objects.filter(
+            user=request.user,
+            category=budget.category,
+            date__range=[budget.start_date, budget.end_date],
+            type='expense'
+        )
+        total_spent = transactions.aggregate(total=Sum('amount'))['total'] or 0
+        budget.spent = total_spent
+        budget.percentage = (total_spent / budget.amount * 100) if budget.amount > 0 else 0
+       
+        if budget.percentage >= 100:
+            budget.status_color = 'danger' 
+            budget.status_text = 'Over Budget!'
+        elif budget.percentage >= budget.alert_threshold:
+            budget.status_color = 'warning' 
+            budget.status_text = 'Near Limit'
+        else:
+            budget.status_color = 'success' 
+            budget.status_text = 'On Track'
     return render(request, 'budgets/budget_home.html', {'budgets': user_budgets})

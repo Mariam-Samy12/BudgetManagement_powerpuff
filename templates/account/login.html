@@ -6,15 +6,18 @@
         <link rel="stylesheet" href="{%static 'css/register.css' %}" >
 
  
-             
-        {% if message %}
 
-    <div>{{ message }}</div>
-
-{% endif %}
     <form action="" id="login" method="post">
         {% csrf_token %}
         <h1>Login</h1>
+       {% if messages %}
+    {% for message in messages %}
+
+        <div class="message {{ message.tags }}">
+  {{ message }}
+</div>
+    {% endfor %}
+{% endif %}
         <div>
             <input type="email" name="email" placeholder="email" class="email" id="email" required>
         </div>

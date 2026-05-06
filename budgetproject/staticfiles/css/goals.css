@@ -1,0 +1,202 @@
+
+:root {
+    --blue-main: #3586e2;
+    --blue-dark: #2b71c2;
+    --blue-light: #60a5fa;
+    --green: #27ae60;
+    --text-dark: #2c3e50;
+    --text-muted: #718096;
+    --bg-page: #e8eef7;
+    --bg-card: #ffffff;
+    --border-radius: 12px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+.goals-list-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+   
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.list-header h1 {
+    color: var(--blue-main);
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+
+.add-btn {
+    background-color: var(--blue-main);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.add-btn:hover {
+    background-color: var(--blue-dark);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.goal-card {
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    border-left: 6px solid var(--blue-main);
+    
+    transition: transform 0.2s;
+}
+
+.goal-card:hover {
+    transform: scale(1.02);
+    
+}
+
+
+.goal-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.goal-name {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    font-weight: bold;
+}
+
+.goal-price {
+    color: var(--green);
+    font-weight: bold;
+}
+
+
+.progress-wrapper {
+    background: #e2e8f0;
+    height: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+
+.progress-fill {
+    background: linear-gradient(90deg, var(--blue-main), var(--blue-light));
+    height: 100%;
+    border-radius: 10px;
+}
+
+
+progress {
+    appearance: none;
+    
+    display: block;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #e2e8f0;
+    border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+    background-color: var(--blue-main);
+    border-radius: 10px;
+    transition: width 0.4s ease;
+    
+}
+
+
+.goal-footer {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 8px;
+}
+
+
+.goals-form-container {
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 40px;
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.goals-form-container h1 {
+    text-align: center;
+    color: var(--blue-main);
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    
+    color: var(--blue-main);
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #cbd5e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--text-dark);
+    background: #f9fbff;
+    box-sizing: border-box;
+
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--blue-main);
+    box-shadow: 0 0 0 3px rgba(53, 134, 226, 0.15);
+}
+
+
+.btn-create {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--blue-main);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-top: 10px;
+}
+
+.btn-create:hover {
+    background-color: var(--blue-dark);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}

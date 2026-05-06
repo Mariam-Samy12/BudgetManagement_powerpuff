@@ -17,7 +17,7 @@ def signup(request):
              form = SignupForm(request.POST)
              if form.is_valid() and valid(email):
                user = form.save(commit=False)
-               user.set_password(user.password)  # 🔥 أهم سطر
+               user.set_password(user.password)  
                user.save()
                return redirect('login')
     
@@ -35,7 +35,6 @@ def loginv(request):
             user = authenticate(request, username=email, password=password)
             if user is not None:
                 login(request, user) 
-                messages.success(request, f"Welcome back, {user.username}!")
                 print("USER:", user)
                 return redirect('/dashboard/')
             else:
@@ -44,7 +43,6 @@ def loginv(request):
     return render(request,'account/login.html')
 def logoutv(request):
     logout(request)
-    messages.info(request, "You have logged out.")
     return redirect('login')
 
 def about(request):

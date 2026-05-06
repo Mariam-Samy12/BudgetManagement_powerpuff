@@ -116,7 +116,7 @@ label {
     background-color: #2b71c2;
 }
 
-
-
-
-
+.message.error {
+    color: red !important;
+    font-size: 14px;
+}

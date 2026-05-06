@@ -2,6 +2,7 @@ from django.db import models
 # from django.contrib.auth.models import User
 from django.conf import settings
 from django.utils import timezone
+from goals.models import Goal
 
 class Transaction(models.Model):
     TRANSACTION_TYPES = [
@@ -26,6 +27,14 @@ class Transaction(models.Model):
         choices=PAYMENT_METHODS, 
         blank=True, 
         null=True
+    )
+
+    goal = models.ForeignKey(
+        Goal, 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True, 
+        related_name='transactions'
     )
 
     def __str__(self):

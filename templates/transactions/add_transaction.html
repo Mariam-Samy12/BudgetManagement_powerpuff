@@ -14,7 +14,7 @@
 
         <label>Amount</label>
         <input type="number" name="amount" step="0.01" placeholder="0.00" required>
-        
+
         <label>Category</label>
         <input type="text" name="category" placeholder="e.g. Food, Salary" required>
 
@@ -22,6 +22,13 @@
         <select name="type">
             <option value="income">Income</option>
             <option value="expense">Expense</option>
+            <option value="Saving">Saving</option>
+        </select> <label>Financial Goal (Optional)</label>
+        <select name="goal">
+            <option value="">None / General Expense</option>
+            {% for goal in goals %}
+            <option value="{{ goal.id }}">{{ goal.name }}</option>
+            {% endfor %}
         </select>
 
         <label>Payment Method</label>

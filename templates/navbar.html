@@ -1,16 +1,28 @@
 {%load static%}
 <link rel="stylesheet" href="{%static 'css/navbar.css'%}">
 <nav class="navbar">
-    <div class="logo"><a href="">📈</a></div>
+    {% if user.is_authenticated %}
+    <div class="logo"><a href="{% url 'dashboard' %}">📈</a></div>
+     {% else %}
+      <div class="logo"><a href="{% url 'signup' %}">📈</a></div>
+     {% endif  %}
     
     <ul class="nav-links">
-        <li><a href="{%url 'Home'%}">Home</a></li>
-        <li><a href="{%url 'about'%}">About us</a></li>
-        <li><a href="{%url 'login'%}">Log in </a></li>
-        <li><a href="{%url 'signup'%}">Sign Up</a></li>
-        <li><a href="{%url 'add_transaction'%}">Add Transaction</a></li>
-        <li><a href="{%url 'budget_home'%}">My Budgets</a></li>
-        <li><a href="{% url 'goals_list' %}">Financial Goals</a></li>
-        <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+   
+
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'add_transaction' %}">Add Transaction</a></li>
+            <li><a href="{% url 'budget_home' %}">My Budgets</a></li>
+            <li><a href="{% url 'goals_list' %}" >Financial Goals</a></li>
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            
+            <li style="color: yellow;">Hi, {{ user.username }}</li>
+            <li><a href="{% url 'logoutv' %}">Logout</a></li>
+
+        {% else %}
+            <li><a href="{% url 'login' %}">Log in</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        {% endif %}
+         <li><a href="{% url 'about' %}">About us</a></li>
     </ul>
 </nav>

@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime
 
 
-@login_required
+@login_required(login_url='login')
 def manage_budget(request, pk=None):
    
     budget_instance = get_object_or_404(Budget, pk=pk, user=request.user) if pk else None
@@ -59,7 +59,7 @@ def manage_budget(request, pk=None):
     return render(request, 'budgets/create_budget.html', {'budget': budget_instance})
 
 
-@login_required
+@login_required(login_url='login')
 def budget_home(request):
     user_budgets = Budget.objects.filter(user=request.user).order_by('-start_date')
     return render(request, 'budgets/budget_home.html', {'budgets': user_budgets})

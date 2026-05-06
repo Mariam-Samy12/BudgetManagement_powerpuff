@@ -3,6 +3,7 @@ from .models import Account
 from .forms import SignupForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 
 def valid(email):
   return not Account.objects.filter(email=email).exists()
@@ -15,28 +16,37 @@ def signup(request):
       
              form = SignupForm(request.POST)
              if form.is_valid() and valid(email):
-                   form.save()
-                   messages.success(request, "Sign-up completed successfully")
-                   return redirect('login')
-
-             elif not valid(email):
-                messages.error(request, "This email already exists")
+               user = form.save(commit=False)
+               user.set_password(user.password)  # 🔥 أهم سطر
+               user.save()
+               return redirect('login')
+    
+            #  elif not valid(email):
+            #     messages.error(request, "This email already exists")
                 
         else:
             form = SignupForm()
         return render(request,'account/signup.html',{'form': form})
 
-def login(request):
+def loginv(request):
     if request.method == 'POST':
             password = request.POST.get('password')
             email=request.POST.get('email')
-            if Account.objects.filter(email=email, password=password).exists():
-                   messages.success(request, "login completed successfully")
-                   return redirect('Home')
+            user = authenticate(request, username=email, password=password)
+            if user is not None:
+                login(request, user) 
+                messages.success(request, f"Welcome back, {user.username}!")
+                print("USER:", user)
+                return redirect('/dashboard/')
             else:
-                messages.error(request, "Invalid email or password.")
+               print("USER:", user)
+               messages.error(request, "Invalid email or password.")
     return render(request,'account/login.html')
-def home(request):
-     return render(request,'account/Home.html')
+def logoutv(request):
+    logout(request)
+    messages.info(request, "You have logged out.")
+    return redirect('login')
+
 def about(request):
+
      return render(request,'about.html')

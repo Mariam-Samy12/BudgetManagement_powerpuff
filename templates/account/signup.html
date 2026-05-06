@@ -1,46 +1,32 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
+{% load static %}
 
+{% block content %}
 
-{%block content%}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
 
+<form id="signform" method="post">
+    {% csrf_token %}
 
+    <h1>Sign up</h1>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SignUp</title>
-    {%load static%}
-    <link rel="stylesheet" href="{%static 'css/register.css' %}">
-</head>
+    {{ form }}
 
-<body>
+    <input type="submit" value="Create" class="create">
 
-
-    <form id="signform" method="post">
-        <h1>Sign up</h1>
-
-        {% csrf_token %}
-        {{form}}
-        <input type="submit" value="Create" class="create">
-        <div class="have_acc">
-            <div class="login">Already have an account? <a href="{%url 'login'%}">login</a></div>
-
+    <div class="have_acc">
+        <div class="login">
+            Already have an account?
+            <a href="{% url 'login' %}">login</a>
         </div>
+    </div>
 
+    {% for message in messages %}
+        <script>
+            alert("{{ message }}");
+        </script>
+    {% endfor %}
 
-        {% if messages %}
-        {% for message in messages %}
-           <script>
-        alert("{{ message }}");
-    </script>
-        {% endfor %}
-        {% endif %}
+</form>
 
-
-
-    </form>
-
-</body>
-
-</html>
-{%endblock content%}
+{% endblock %}

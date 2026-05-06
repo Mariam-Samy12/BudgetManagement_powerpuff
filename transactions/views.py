@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Transaction
-
-
+from django.contrib.auth.decorators import login_required
+@login_required(login_url='login')
 def add_transaction(request):
     if request.method == "POST":
         Transaction.objects.create(
@@ -11,5 +11,5 @@ def add_transaction(request):
             type=request.POST['type'],
             date=request.POST['date']
         )
-        return redirect('Home')
+        return redirect('/dashboard/')
     return render(request, 'transactions/add_transaction.html')
